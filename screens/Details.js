@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView,Image,StatusBar,FlatList, Text, View } from 'react-native'
 import React from 'react'
-
-const Details = () => {
+import { COLORS, FONTS, SIZES, assets } from '../constants'
+import {CircleButton,RectButton,SubInfo,FocusedStatusBar,DetailsDesc,DetailsBid} from "../components"
+const Details = ({route,navigation}) => {
   return (
     <View>
       <Text>Details</Text>
@@ -10,5 +11,3 @@ const Details = () => {
 }
 
 export default Details
-
-const styles = StyleSheet.create({})
