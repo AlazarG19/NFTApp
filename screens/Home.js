@@ -1,23 +1,42 @@
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
-import { COLORS, NFTData } from '../constants'
-import { FocusedStatusBar, Homeheader, NFTCard } from '../components'
+import { FlatList, SafeAreaView, StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import { COLORS, NFTData } from "../constants";
+import { FocusedStatusBar, Homeheader, NFTCard } from "../components";
 const Home = () => {
+  const [nftdata, setNftData] = useState(NFTData);
+   
+  const handleSearch = (value) => {
+    if (value.length === 0) {
+      setNftData(NFTData);
+    }
+
+    const filteredData = NFTData.filter((item) =>
+      item.name.toLowerCase().includes(value.toLowerCase())
+    );
+
+    if (filteredData.length === 0) {
+      setNftData(NFTData);
+    } else {
+      setNftData(filteredData);
+    }
+  };
+
+  console.log("home opened ")
   return (
     <SafeAreaView style={styles.container} background={COLORS.primary}>
-      <FocusedStatusBar />
+      <FocusedStatusBar background={COLORS.primary} />
       <View style={{ flex: 1 }}>
         <View style={{ zIndex: 0 }}>
           <FlatList
-            data={NFTData}
+            data={nftdata}
             renderItem={({ item }) => <NFTCard data={item} />}
-            // keyExtractor = {({item})=>item.id}
+            keyExtractor = {(item)=>item.id}
             showsVerticalScrollIndicator={false}
-            ListHeaderComponent={() => <Homeheader />}
+            ListHeaderComponent={<Homeheader onSearch={handleSearch} />}
           />
           <View
             style={{
-              position: 'absolute',
+              position: "absolute",
               top: 0,
               bottom: 0,
               right: 0,
@@ -31,13 +50,13 @@ const Home = () => {
         </View>
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-})
+});

@@ -4,6 +4,7 @@ import NFTCard from "./NFTCard"
 import { RectButton,CircleButton } from "./Button"
 import DetailsDesc from "./DetailsDesc"
 import DetailsBid from "./DetailsBid"
+import { SubInfo } from "./SubInfo"
 export {
     Homeheader,
     FocusedStatusBar,
@@ -11,5 +12,6 @@ export {
     CircleButton,
     RectButton,
     DetailsDesc,
-    DetailsBid
+    DetailsBid,
+    SubInfo
 }

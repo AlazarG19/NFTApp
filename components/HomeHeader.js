@@ -1,6 +1,7 @@
 import { Image, TextInput, Text, View } from 'react-native'
 import { COLORS, FONTS, SIZES, assets } from '../constants'
 const HomeHeader = ({onSearch}) => {
+  // console.log("reloaded")
   return (
     <View
       style={{ backgroundColor: COLORS.primary, padding: SIZES.font }}
